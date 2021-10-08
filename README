@@ -1,0 +1,27 @@
+
+   ________               .__       .__ 
+  /  _____/  ____   _____ |__| ____ |__|
+ /   \  ____/ __ \ /     \|  |/    \|  |
+ \    \_\  \  ___/|  | |  \  |   |  \  |
+  \______  /\___  >__|_|  /__|___|  /__|
+         \/     \/      \/        \/    
+        GEMINI DOTS COMPILER
+        Leda v1.0
+
+
+===============================================================================
+===============================================================================
+
+Leda is the Gemini DOTS compiler program. It takes DOTS source files and compiles
+them to Gemini VPU machine code called Stim files. Stim files are loaded into
+memory and the VPUs running on Castor and Pollux, the two Artix FPGAs, execute
+them according to the sequence specified in Flow files.
+
+
+
+
+
+
+
+
+
