@@ -6,10 +6,11 @@
   \______  /\___  >__|_|  /__|___|  /__|
          \/     \/      \/        \/    
         GEMINI DOTS COMPILER
-        Leda v1.0
+        Leda v0.1
 
 
 ===============================================================================
+OVERVIEW
 ===============================================================================
 
 Leda is the Gemini DOTS compiler program. It takes DOTS source files and compiles
@@ -18,10 +19,14 @@ memory and the VPUs running on Castor and Pollux, the two Artix FPGAs, execute
 them according to the sequence specified in Flow files.
 
 
+===============================================================================
+INSTALL
+===============================================================================
 
 
-
-
-
+1. git clone https://github.com/geminicomplex/leda
+2. git submodule update --init --recursive
+3. make
+4. make install
 
 
