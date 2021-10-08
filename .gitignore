@@ -1,0 +1,5 @@
+build/
+leda
+*.o
+gcorelib/
+gcorelib/*.o
