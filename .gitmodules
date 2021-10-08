@@ -1,0 +1,3 @@
+[submodule "gcorelib"]
+	path = gcorelib
+	url = https://github.com/geminicomplex/gcorelib
