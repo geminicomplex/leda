@@ -9,19 +9,19 @@ CFLAGS := ${ARM_CFLAGS} -g -ggdb -O2 -c -Wall -D_FILE_OFFSET_BITS=64 -D_LARGEFIL
 LDFLAGS := -fPIC
 
 OS := $(shell uname)
+ifeq ($(MAKECMDGOALS),gemini)
+	PLAT := gemini
+	CC := arm-linux-gnueabihf-gcc
+	ARM_CFLAGS := -march=armv7-a -mcpu=cortex-a9 -mtune=cortex-a9 -mfpu=neon -mfloat-abi=hard
+	CFLAGS := ${ARM_CFLAGS} $(CFLAGS) -D_FILE_OFFSET_BITS=64
+	LDFLAGS += -lpthread
+	BUILD_PATH := build/gemini
+else
 ifeq ($(OS),Darwin)
 	PLAT := mac
 	CC := clang
 	LDFLAGS += -lpthread
 	BUILD_PATH := build/macosx
-else
-ifeq ($(MAKECMDGOALS),arm)
-	PLAT := arm
-	CC := arm-linux-gnueabihf-gcc
-	ARM_CFLAGS := -march=armv7-a -mcpu=cortex-a9 -mtune=cortex-a9 -mfpu=neon -mfloat-abi=hard
-	CFLAGS := ${ARM_CFLAGS} $(CFLAGS) -D_FILE_OFFSET_BITS=64
-	LDFLAGS += -lpthread
-	BUILD_PATH := build/arm
 else
 	PLAT := linux
 	CC := gcc
@@ -46,7 +46,11 @@ HEADERS := gcorelib/profile.h gcorelib/stim.h gcorelib/config.h gcorelib/ gcorel
 
 OBJS = $(SRCS:%.c=%.o)
 
+# compile for mac or linux
 all: $(EXEC)
+
+# compile for Gemini Tester
+gemini: $(EXEC)
 
 $(EXEC) : $(OBJS)
 	mkdir -p $(BUILD_PATH)
@@ -56,9 +60,16 @@ $(EXEC) : $(OBJS)
 %.o : %.c %.h 
 	$(CC) $(CFLAGS) $(INCLUDES) $< -o $@
 
+# installs for mac or linux
+install: $(EXEC)
+	cp -fv $(EXEC) /usr/local/bin/leda
+
+uninstall:
+	rm -f /usr/local/bin/leda
+
 clean:
 	find . -name "*.o" -delete
 	rm -rf leda build
 
-.PHONY : all clean
+.PHONY : all clean gemini
 
