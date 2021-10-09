@@ -11,7 +11,7 @@ LDFLAGS := -fPIC
 OS := $(shell uname)
 ifeq ($(OS),Darwin)
 	PLAT := mac
-	CC := gcc
+	CC := clang
 	LDFLAGS += -lpthread
 	BUILD_PATH := build/macosx
 else
