@@ -13,11 +13,19 @@
 OVERVIEW
 ===============================================================================
 
-Leda is the Dots compiler program for the [Gemini Tester](https://https://www.geminicomplex.com/). 
-It takes [Dots source files](https://www.geminicomplex.com/docs/dots) and compiles them to 
+Leda is the Dots compiler program for the Gemini Tester. 
+It takes Dots source files and compiles them to 
 Gemini VPU machine code called Stim files. Stim files are loaded into memory
 and the VPUs running on Castor and Pollux, the two Artix FPGAs, execute them
 according to the sequence specified in Prgm program files.
+
+===============================================================================
+DOCS
+===============================================================================
+
+For Dots syntax and language specification check out the docs.
+
+https://www.geminicomplex.com/docs/dots
 
 
 ===============================================================================
