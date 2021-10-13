@@ -14,8 +14,8 @@
 #include <fcntl.h>
 #include <inttypes.h>
 
-#include "gcorelib/util.h"
-#include "gcorelib/stim.h"
+#include "libgcore/util.h"
+#include "libgcore/stim.h"
 
 static const char usage[] = "Usage: %s -p <profile.json> [dots_file ...]\n";
 

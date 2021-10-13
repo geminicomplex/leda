@@ -1,3 +1,6 @@
 [submodule "gcorelib"]
 	path = gcorelib
 	url = https://github.com/geminicomplex/gcorelib
+[submodule "libgcore"]
+	path = libgcore
+	url = https://github.com/geminicomplex/libgcore

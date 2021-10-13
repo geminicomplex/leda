@@ -4,7 +4,7 @@
 # Copyright (c) 2015-2021 Gemini Complex Corporation. All rights reserved.
 #
 
-INCLUDES := -I. -I./gcorelib -I./gcorelib/lib/jsmn -I./gcorelib/lib/avl -I./gcorelib/lib/lz4 -I./gcorelib/lib/capnp -I./gcorelib/lib/slog 
+INCLUDES := -I. -I./libgcore -I./libgcore/lib/jsmn -I./libgcore/lib/avl -I./libgcore/lib/lz4 -I./libgcore/lib/capnp -I./libgcore/lib/slog 
 CFLAGS := ${ARM_CFLAGS} -g -ggdb -O2 -c -Wall -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE
 LDFLAGS := -fPIC
 
@@ -32,17 +32,17 @@ endif
 
 EXEC := $(BUILD_PATH)/leda
 
-SRCS := gcorelib/common.c gcorelib/dots.c gcorelib/util.c gcorelib/profile.c gcorelib/stim.c gcorelib/subvec.c \
-	   gcorelib/serialize/stim_serdes.capnp.c gcorelib/config.c gcorelib/lib/capnp/capn.c gcorelib/lib/capnp/capn-malloc.c \
-	   gcorelib/lib/capnp/capn-stream.c gcorelib/lib/lz4/lz4hc.c gcorelib/lib/lz4/lz4frame.c gcorelib/lib/lz4/xxhash.c \
-	   gcorelib/lib/lz4/lz4.c gcorelib/lib/jsmn/jsmn.c gcorelib/lib/avl/avl.c gcorelib/lib/slog/slog.c gcorelib/lib/fe/fe.c \
+SRCS := libgcore/common.c libgcore/dots.c libgcore/util.c libgcore/profile.c libgcore/stim.c libgcore/subvec.c \
+	   libgcore/serialize/stim_serdes.capnp.c libgcore/config.c libgcore/lib/capnp/capn.c libgcore/lib/capnp/capn-malloc.c \
+	   libgcore/lib/capnp/capn-stream.c libgcore/lib/lz4/lz4hc.c libgcore/lib/lz4/lz4frame.c libgcore/lib/lz4/xxhash.c \
+	   libgcore/lib/lz4/lz4.c libgcore/lib/jsmn/jsmn.c libgcore/lib/avl/avl.c libgcore/lib/slog/slog.c libgcore/lib/fe/fe.c \
 	   main.c
 
-HEADERS := gcorelib/profile.h gcorelib/stim.h gcorelib/config.h gcorelib/ gcorelib/dots.h gcorelib/common.h gcorelib/subvec.h gcorelib/util.h \
-		gcorelib/serialize/stim_serdes.capnp.h gcorelib/lib/capnp/capnp_priv.h gcorelib/lib/capnp/capnp_c.h \
-		lgcorelib/ib/lz4/xxhash.h gcorelib/lib/lz4/lz4.h gcorelib/lib/lz4/lz4frame_static.h gcorelib/lib/lz4/lz4hc.h \
-		lgcorelib/ib/lz4/lz4frame.h gcorelib/lib/jsmn/jsmn.h \
-		lgcorelib/ib/avl/avl.h gcorelib/lib/slog/slog.h gcorelib/lib/fe/fe.h
+HEADERS := libgcore/profile.h libgcore/stim.h libgcore/config.h libgcore/ libgcore/dots.h libgcore/common.h libgcore/subvec.h libgcore/util.h \
+		libgcore/serialize/stim_serdes.capnp.h libgcore/lib/capnp/capnp_priv.h libgcore/lib/capnp/capnp_c.h \
+		llibgcore/lib/lz4/xxhash.h libgcore/lib/lz4/lz4.h libgcore/lib/lz4/lz4frame_static.h libgcore/lib/lz4/lz4hc.h \
+		libgcore/lib/lz4/lz4frame.h libgcore/lib/jsmn/jsmn.h \
+		libgcore/lib/avl/avl.h libgcore/lib/slog/slog.h libgcore/lib/fe/fe.h
 
 OBJS = $(SRCS:%.c=%.o)
 
