@@ -52,13 +52,19 @@ all: $(EXEC)
 # compile for Gemini Tester
 gemini: $(EXEC)
 
-$(EXEC) : $(OBJS)
+$(EXEC) : submodules $(OBJS)
 	mkdir -p $(BUILD_PATH)
 	$(CC) $(INCLUDES) $(LDFLAGS) $(OBJS) -o $(EXEC)
 	ln -s -f $(EXEC) leda
 
 %.o : %.c %.h 
 	$(CC) $(CFLAGS) $(INCLUDES) $< -o $@
+
+submodules:
+	@if git submodule status | egrep -q '^[-]|^[+]' ; then \
+            echo "INFO: Need to reinitialize git submodules"; \
+            git submodule update --init; \
+    fi
 
 # installs for mac or linux
 install: $(EXEC)
@@ -71,5 +77,5 @@ clean:
 	find . -name "*.o" -delete
 	rm -rf leda build
 
-.PHONY : all clean gemini
+.PHONY : all clean gemini submodules
 
